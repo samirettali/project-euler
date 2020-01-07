@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-from library import primes_sieve, is_prime, combinations
 import time
+from library import primes_sieve, is_prime, combinations
 
 
 def concat_numbers(n, m):
@@ -9,7 +9,6 @@ def concat_numbers(n, m):
 
 def find_concatenables(n, primes):
     c = set()
-    # print(n)
     for p in primes[primes.index(n) + 1:]:
         if is_prime(concat_numbers(n, p)) and is_prime(concat_numbers(p, n)):
             c.add(p)
