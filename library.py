@@ -77,3 +77,20 @@ def is_octagonal(n):
         return False
     test = (sqrt(1 + 3 * n) + 1) / 3
     return test == int(test)
+
+
+def get_continued_fraction(n):
+    limit = sqrt(n)
+    a = int(limit)
+    period = []
+
+    if a * a != n:
+        d = 1.0
+        m = 0.0
+
+        while a != 2 * int(limit):
+            m = d * a - m
+            d = (n - m * m) / d
+            a = int((limit + m) / d)
+            period.append(a)
+    return [int(limit), period]
