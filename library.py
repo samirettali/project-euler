@@ -35,6 +35,13 @@ def primes_up_to(n):
     return primes
 
 
+def primes_range(start, end):
+    primes = []
+    for n in range(start, end + 1):
+        if is_prime(n):
+            primes.append(n)
+    return primes
+
 def factorize(n, primes=None):
     factors = []
     if not primes:
