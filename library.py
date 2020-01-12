@@ -123,3 +123,7 @@ def get_continued_fraction(n):
             a = int((limit + m) / d)
             period.append(a)
     return [int(limit), period]
+
+
+def is_permutation(s1, s2):
+    return sorted(s1) == sorted(s2)
