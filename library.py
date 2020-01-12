@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import itertools
-from math import sqrt
+from math import floor, sqrt
 
 
 def is_prime(n):
@@ -20,12 +20,41 @@ def is_prime(n):
     return True
 
 
-def primes_sieve(n):
+def next_prime(n):
+    n += 1
+    while not is_prime(n):
+        n += 1
+    return n
+
+
+def primes_up_to(n):
     primes = []
-    for i in range(n + 1):
+    for i in range(2, n):
         if is_prime(i):
             primes.append(i)
     return primes
+
+
+def factorize(n, primes=None):
+    factors = []
+    if not primes:
+        primes = primes_up_to(n)
+    while n > 1 and len(primes) > 0:
+        p = primes[0]
+        primes.remove(p)
+        while n % p == 0:
+            factors.append(p)
+            n /= p
+    return factors
+
+
+def prime_factors(n, primes=None):
+    result = None
+    if primes:
+        result = factorize(n, primes)
+    else:
+        result = factorize(n)
+    return list(set(result))
 
 
 def combinations(elements, n):
